@@ -1,54 +1,40 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Nav, Card, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
+import Name from './Name';
+import Price from './Price';
+import Description from './Description';
+import Image from './Image';
 
-function App() {
+// Provide your name here
+const firstName = "Alex"; // Change to "" to test fallback
+
+const App = () => {
   return (
-    <>
-      <div className="App">
-        <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">My React App</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-
-        <Container className="mt-4">
-          <h1>Welcome to React Bootstrap</h1>
-          <Row>
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Card 1</Card.Title>
-                  <Card.Text>This is the first card.</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Card 2</Card.Title>
-                  <Card.Text>This is the second card.</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Card 3</Card.Title>
-                  <Card.Text>This is the third card.</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </>
+    <Container className="my-5">
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <Card className="shadow-lg">
+            <Card.Body>
+              <Image />
+              <Card.Title className="mt-3"><Name /></Card.Title>
+              <Card.Subtitle className="mb-2"><Price /></Card.Subtitle>
+              <Card.Text><Description /></Card.Text>
+            </Card.Body>
+          </Card>
+          <div className="text-center mt-4">
+            <h4>Hello, {firstName ? firstName : 'there'}!</h4>
+            {firstName && (
+              <img
+                src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+                alt="Hello"
+                style={{ width: '150px', marginTop: '10px' }}
+              />
+            )}
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;
